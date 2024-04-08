@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st 
 
 # To run web app with multiple pages, run 'streamlit main_page.py' on your terminal
 
@@ -17,5 +17,23 @@ That’s it! The main_page.py script will now correspond to the main page of you
 And you’ll see the other scripts from the pages folder in the sidebar page selector. The pages are listed according to filename (without file extensions and disregarding underscores).
 '''
 
-st.markdown("# Main page 🎈")
-st.sidebar.markdown("# Main page 🎈")
+st.set_page_config(          
+    page_title = "Real-Time Data Dashboard",             
+    page_icon = "Active",          
+    layout = "wide",       
+)
+
+with st.sidebar:
+    st.title('Main page 🎈')
+    st.caption("main")
+    
+file = st.file_uploader("Upload file here:", accept_multiple_files = False)
+
+# Process the uploaded files
+if file:
+    if file.type == "text/csv" or file.type == "text/xlsx":
+        file_details = {"FileName": file.name, "FileType": file.type, "FileSize": file.size}
+        st.write("You have uploaded: ", file_details)
+        
+    else:
+        st.write("Please upload valid file and check file type!")
