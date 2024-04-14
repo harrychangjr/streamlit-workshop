@@ -1,4 +1,11 @@
 import streamlit as st 
+import pandas as pd
+
+st.set_page_config(          
+    page_title = "Real-Time Data Dashboard",             
+    page_icon = "Active",          
+    layout = "wide",       
+)
 
 # To run web app with multiple pages, run 'streamlit main_page.py' on your terminal
 
@@ -17,17 +24,20 @@ That’s it! The main_page.py script will now correspond to the main page of you
 And you’ll see the other scripts from the pages folder in the sidebar page selector. The pages are listed according to filename (without file extensions and disregarding underscores).
 '''
 
-st.set_page_config(          
-    page_title = "Real-Time Data Dashboard",             
-    page_icon = "Active",          
-    layout = "wide",       
-)
+
 
 with st.sidebar:
     st.title('Main page 🎈')
     st.caption("main")
+
+with st.form(key='my_form_to_submit'):
+    file = st.file_uploader("Upload file here:", accept_multiple_files = False)
+    submit_button = st.form_submit_button(label='Submit')
     
-file = st.file_uploader("Upload file here:", accept_multiple_files = False)
+if file:
+    st.session_state["uploaded_file"] = pd.read_csv(file)
+    
+
 
 # Process the uploaded files
 if file:
