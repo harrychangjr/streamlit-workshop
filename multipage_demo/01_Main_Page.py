@@ -11,12 +11,16 @@ st.markdown("# Input Your Data")
 
 '''
 Multipage Streamlit apps are useful when we want to organise our data and functionalities.
-To get started, you just need to have the main_page and another folder containing the scripts for the other pages
+
+To get started, you just need to have the `main_page` and another folder containing the scripts for the other pages
 
 This section showcases:
-    1. Using multiple pages
-    2. Streamlit Components
-    3. Sample Data Uses
+
+1. Using multiple pages
+
+2. Streamlit Components
+
+3. Sample Data Uses
 
 Based on: [Data Collection] -> [Data Analysis] -> [Data Modelling]
 
