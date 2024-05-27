@@ -17,6 +17,7 @@ This section showcases:
     1. Using multiple pages (file structure and persisting variables)
     2. Waiting for excecution
     3. Sample Data Uses
+    4. Streamlit components
 
               main_page            page_2             page_3
 Based on: [Data Collection] -> [Data Analysis] -> [Data Modelling]
