@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px 
 import streamlit as st 
 
+# Components are third-party modules used to extend functionality from base Streamlit
 # https://streamlit.io/components?category=charts
 from streamlit_shap import st_shap
 import time
@@ -30,8 +31,8 @@ try:
     with st.form(key='confirm_variable_select'):
         file = st.session_state["uploaded_file"]
         file_columns = list(file.columns)
-        print("file:", file)
-        print("file cols:", list(file.columns))
+        # print("file:", file)
+        # print("file cols:", list(file.columns))
         
         col1, col2, col3 = st.columns([1,1,1])
         with col1:
@@ -44,14 +45,13 @@ try:
         submit_button = st.form_submit_button(label='Submit')
 
     if submit_button:
-        with st.spinner("Training model..."):
-            time.sleep(2) # simulate model training
+        with st.spinner("Training model..."): # Indicator that enclosed code is still running
             
             selected_cols = list(numerical_filter + categorical_filter)
             X = file[selected_cols]
             Y = file[y_filter]
-            
-            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+        
+            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=88)
             
             ohe = OneHotEncoder(cols=categorical_filter)
             X_train = ohe.fit_transform(X_train)
@@ -78,8 +78,6 @@ try:
             shap_values = explainer(X_test)
             st_shap(shap.plots.beeswarm(shap_values))
             
-            print(log_reg.coef_)
-            print(log_reg.coef_[0])
             st.write("Model Coefficients:")
             for i, col in enumerate(X_train.columns):
                 st.write(col + ": " + str(log_reg.coef_[0][i]))
