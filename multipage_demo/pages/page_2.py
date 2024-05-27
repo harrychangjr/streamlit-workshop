@@ -5,51 +5,50 @@ import pandas as pd
 import plotly.express as px 
 import streamlit as st 
 import time
- 
-# setting path
-
-# from main_page import file, submit_button
 
 with st.sidebar:
     st.title('Page 2 ❄️')
     st.caption("This page showcases how you can explore data")
     
 st.markdown("# Visualize Your Data")
+
 """
 Now we want to try understand our data better.
 Select the variables and type of plots
 """ 
     
 try:
+    # get persisted data
     file = st.session_state["uploaded_file"]
-    
+
+    #create "sections" in the display
     outer1, outer2 = st.columns([1,1])
     
     with outer1:
-        # https://docs.streamlit.io/develop/api-reference/data/st.dataframe
         st.dataframe(file)
     
     with outer2:
         with st.form(key='confirm_plot_selection'):
             
             file_columns = list(file.columns)
-            print("file:", file)
-            print("file cols:", list(file.columns))
+            # print("file:", file)
+            # print("file cols:", list(file.columns))
             
-            col1, col2, col3 = st.columns([1,1,1])
-            with col1:
-                x_filter = st.selectbox ("Select X value", [None] + file_columns)
-            with col2:
-                y_filter = st.selectbox ("Select Y value", [None] + file_columns)
-            with col3:
-                group_filter = st.selectbox ("Select Group value", [None] + file_columns)
+            inner1, inner2, inner3 = st.columns([1,1,1])
+            with inner1:
+                x_filter = st.selectbox(label = "Select X value", options = [None] + file_columns)
+            with inner2:
+                y_filter = st.selectbox(label = "Select Y value", options = [None] + file_columns)
+            with inner3:
+                group_filter = st.selectbox(label = "Select Group value", options = [None] + file_columns)
 
             #https://plotly.com/python/plotly-express/
-            chart_visual = st.selectbox("Select Visual Charts", [None] + ["Line Chart", "Box Plot"])
+            chart_visual = st.selectbox("Select Visual Charts", [None] + ["Scatter Plot", "Box Plot"])
             submit_button = st.form_submit_button(label='Submit')
 
     if submit_button:
-        if chart_visual == "Line Chart":
+        #create chart
+        if chart_visual == "Scatter Plot":
             fig = px.scatter(file, 
                         x=x_filter, 
                         y=y_filter, 
@@ -63,10 +62,11 @@ try:
                         x=x_filter,
                         title= f"Plot of {y_filter} by {group_filter}")
 
+        #plot chart using plotly
         if fig:
             st.plotly_chart(fig)
         
-        else:
+        else: 
             st.write("Choose an appropriate Plot!")
         
 except:
