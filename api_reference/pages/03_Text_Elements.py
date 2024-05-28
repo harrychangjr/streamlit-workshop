@@ -50,15 +50,11 @@ st.subheader("st.header")
 
 st.write("Display text in header formatting.")
 
-st.header('This is a header with a divider', divider='rainbow')
-st.header('_Streamlit_ is :blue[cool] :sunglasses:')
 
 st.subheader("st.subheader")
 
 st.write("Display text in subheader formatting.")
 
-st.subheader('This is a subheader with a divider', divider='rainbow')
-st.subheader('_Streamlit_ is :blue[cool] :sunglasses:')
 
 st.subheader("st.caption")
 
@@ -104,8 +100,6 @@ st.write("Display a horizontal rule.")
 st.divider()
 
 st.write("This is some text.")
-
-st.slider("This is a slider", 0, 100, (25, 75))
 
 st.divider()  # 👈 Draws a horizontal rule
 

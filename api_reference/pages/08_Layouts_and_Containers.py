@@ -63,25 +63,17 @@ with st.container():
    # You can call any Streamlit command, including custom components:
    st.bar_chart(np.random.randn(50, 3))
 
-st.write("This is outside the container")
-
-container = st.container(border=True)
-container.write("This is inside the container")
-st.write("This is outside the container")
-
-# Now insert some more in the container
-container.write("This is inside too")
 
 row1 = st.columns(3)
 row2 = st.columns(3)
 
 for col in row1 + row2:
-    tile = col.container(height=120)
+    tile = col.container()
     tile.title(":balloon:")
 
 long_text = "Lorem ipsum. " * 1000
 
-with st.container(height=300):
+with st.container():
     st.markdown(long_text)
 
 st.subheader("st.empty")
@@ -128,25 +120,6 @@ with st.expander("See explanation"):
     """)
     st.image("https://static.streamlit.io/examples/dice.jpg")
 
-st.subheader("st.popover")
-
-st.write("""
-
-Insert a popover container.
-
-Inserts a multi-element container as a popover. It consists of a button-like element and a container that opens when the button is clicked.
-
-Opening and closing the popover will not trigger a rerun. Interacting with widgets inside of an open popover will rerun the app while keeping the popover open. Clicking outside of the popover will close it.
-
-To add elements to the returned container, you can use the "with" notation (preferred) or just call methods directly on the returned object. See examples below.
-
-""")
-
-with st.popover("Open popover"):
-    st.markdown("Hello World 👋")
-    name = st.text_input("What's your name?")
-
-st.write("Your name:", name)
 
 st.subheader("st.sidebar")
 
@@ -155,19 +128,6 @@ st.write("""
 Not only can you add interactivity to your app with widgets, you can organize them into a sidebar. Elements can be passed to `st.sidebar` using object notation and `with` notation.
 
 """)
-
-# Using object notation
-add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
-)
-
-# Using "with" notation
-with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    )
 
 with st.sidebar:
     with st.echo():
