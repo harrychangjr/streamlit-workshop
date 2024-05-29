@@ -36,7 +36,7 @@ try:
         
         col1, col2, col3 = st.columns([1,1,1])
         with col1:
-            numerical_filter = st.multiselect("Select numerical X values", file_columns)
+            numerical_filter = st.multiselect("Select continuous X values", file_columns)
         with col2:
             categorical_filter = st.multiselect("Select categorical X values", file_columns)
         with col3:

@@ -48,26 +48,30 @@ try:
 
     if submit_button:
         #create chart
-        if chart_visual == "Scatter Plot":
-            fig = px.scatter(file, 
-                        x=x_filter, 
-                        y=y_filter, 
-                        color=group_filter, 
-                        opacity = 0.5,
-                        title= f"Plot of {y_filter} against {x_filter}")
+        try:
+            if chart_visual == "Scatter Plot":
+                fig = px.scatter(file, 
+                            x=x_filter, 
+                            y=y_filter, 
+                            color=group_filter, 
+                            opacity = 0.7,
+                            title= f"Plot of {y_filter} against {x_filter}")
 
-        elif chart_visual == "Box Plot":
-            fig = px.box(file, 
-                        y=y_filter, 
-                        x=x_filter,
-                        title= f"Plot of {y_filter} by {group_filter}")
+            elif chart_visual == "Box Plot":
+                fig = px.box(file, 
+                            y=y_filter, 
+                            x=x_filter,
+                            title= f"Plot of {y_filter} by {group_filter}")
 
-        #plot chart using plotly
-        if fig:
-            st.plotly_chart(fig)
+            #plot chart using plotly
+            if fig:
+                st.plotly_chart(fig)
+            
+            else: 
+                st.write("Choose an appropriate Plot!")
         
-        else: 
-            st.write("Choose an appropriate Plot!")
+        except:
+            st.write("Excecuted")
         
 except:
     st.write("Please input data in the Main Page first!")

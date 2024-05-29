@@ -13,14 +13,13 @@ st.markdown("# Input Your Data")
 Multipage Streamlit apps are useful when we want to organise our data and functionalities.
 To get started, you just need to have the main_page and another folder containing the scripts for the other pages
 
-This section showcases:
-    1. Using multiple pages (file structure and persisting variables)
-    2. Waiting for excecution
-    3. Sample Data Uses
-    4. Streamlit components
+This demo showcases:\n
+    1. Using multiple pages (file structure and persisting variables)\n
+    2. Waiting for excecution\n
+    3. Sample Data Uses\n
+    4. Streamlit components\n
 
-              main_page            page_2             page_3
-Based on: [Data Collection] -> [Data Analysis] -> [Data Modelling]
+Based on [Data Collection] -> [Data Analysis] -> [Data Modelling]
 
 Let's Begin!
 '''
@@ -49,9 +48,9 @@ if submit_button: # check that button has been pressed
 
             #persist data within the session
             try:
-                st.session_state["uploaded_file"] = pd.read_csv(file)
+                st.session_state["uploaded_file"] = pd.read_csv(file).dropna() #for simplicity
             except:
-                st.session_state["uploaded_file"] = pd.read_xlsx(file)
+                st.session_state["uploaded_file"] = pd.read_xlsx(file).dropna() #for simplicity
             
         else:
             st.write("Please upload valid file and check file type!")

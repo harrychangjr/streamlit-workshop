@@ -5,6 +5,7 @@ import plotly.express as px
 import streamlit as st 
 
 # Components are third-party modules used to extend functionality from base Streamlit
+#TODO:
 # https://streamlit.io/components?category=charts
 from streamlit_shap import st_shap
 import time
@@ -31,12 +32,10 @@ try:
     with st.form(key='confirm_variable_select'):
         file = st.session_state["uploaded_file"]
         file_columns = list(file.columns)
-        # print("file:", file)
-        # print("file cols:", list(file.columns))
         
         col1, col2, col3 = st.columns([1,1,1])
         with col1:
-            numerical_filter = st.multiselect("Select numerical X values", file_columns)
+            numerical_filter = st.multiselect("Select continuous X values", file_columns)
         with col2:
             categorical_filter = st.multiselect("Select categorical X values", file_columns)
         with col3:
