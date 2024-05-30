@@ -4,3 +4,8 @@ vega_datasets
 bokeh
 pydeck
 graphviz
+plotly
+category_encoders 
+streamlit-shap 
+scikit-learn 
+plotly
