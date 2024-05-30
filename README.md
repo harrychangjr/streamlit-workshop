@@ -17,4 +17,6 @@ To run the Streamlit applications provided, you can run `streamlit run xxxxxxxxx
 
 e.g. `streamlit run .\api_reference\01_Main.py`
 
+For further instructions on how to use version control using Git, you may check out the following repo: https://github.com/kwangyy/IT1244-Additional-Materials/blob/main/1%20-%20Git.ipynb
+
 Have fun with the workshop!
