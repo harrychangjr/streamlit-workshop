@@ -11,7 +11,7 @@ Installation instructions:
 1. Open your Terminal.
 2. Clone this repo by typing `git clone https://github.com/harrychangjr/streamlit-workshop/` into your Terminal.
 3. In your Terminal, type `pip install -r requirements.txt` to install the required libraries.
-4. 4. (If required) to keep up with the newest updates of this repository, remember to type `git pull` into your Terminal to obtain the latest updated files.
+4. (If required) to keep up with the newest updates of this repository, remember to type `git pull` into your Terminal to obtain the latest updated files.
 
 To run the Streamlit applications provided, you can run `streamlit run xxxxxxxxxx.py` to load the Streamlit app locally! Be sure to replace the xxxxxxxxxx.py with the file that you'd like to run.
 
