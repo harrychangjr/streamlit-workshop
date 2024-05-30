@@ -10,3 +10,4 @@ category_encoders
 streamlit-shap 
 scikit-learn 
 plotly
+matplotlib==3.9.0
